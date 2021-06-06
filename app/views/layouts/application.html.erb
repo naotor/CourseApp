@@ -7,9 +7,28 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application', media: 'all' %>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">履修管理システム</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
