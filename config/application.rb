@@ -38,7 +38,8 @@ module CourseApp
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
-      g.helper false
+      g.helper      false
+      g.decorator   false
       g.template_engine :erb
       g.test_framework  :test_unit, fixture: false
     end
