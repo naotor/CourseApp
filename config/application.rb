@@ -34,5 +34,16 @@ module CourseApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.template_engine :erb
+      g.test_framework  :test_unit, fixture: false
+    end
+
+    config.active_record.timestamped_migrations = false
+    # config.action_controller.permit_all_parameters = true
   end
 end
