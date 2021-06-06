@@ -22,7 +22,8 @@
         <a class="navbar-brand" href="/">履修管理システム</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-              <%= navlink "クラス管理", courses_path, :courses, [:index] %>
+              <%= navlink "クラス管理", courses_path, :courses, [:index, :show, :new, :edit] %>
+              <%= navlink "講師管理", teachers_path, :teachers, [:index, :show, :new, :edit] %>
             </ul>
           </div>
       </div>

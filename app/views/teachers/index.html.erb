@@ -1,0 +1,31 @@
+<h2>
+  講師一覧
+</h2>
+<%= link_to("新規作成", new_teacher_path, { class: "btn btn-primary"}) %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>講師ID</td>
+      <td>名前</td>
+      <td>電話番号</td>
+      <td>性別</td>
+      <td>アクション</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teacher| %>
+      <tr>
+        <td><%= teacher.id %></td>
+        <td><%= teacher.name %></td>
+        <td><%= teacher.phone_number %></td>
+        <td><%= teacher.gender.name %></td>
+        <td>
+          <%= link_to("詳細", teacher_path(teacher), { class: "btn btn-default"}) %>
+          <%= link_to("編集", edit_teacher_path(teacher), { class: "btn btn-success"}) %>
+          <%= link_to("削除", teacher_path(teacher), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
