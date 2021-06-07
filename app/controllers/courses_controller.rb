@@ -46,8 +46,8 @@ class CoursesController < ApplicationController
         name
         teacher_id
         level_id
-      ).push(
+      ) + [
         genre_ids: []
-      ))
+      ])
   end
 end
