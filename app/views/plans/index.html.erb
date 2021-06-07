@@ -1,6 +1,6 @@
 <h2><%= @course.name %>の科目一覧</h2>
 
-<p><%= link_to "科目の追加", new_course_plan_path(@course), { class: "btn btn-primary" } %></p>
+<p><%= link_to "新規作成", new_course_plan_path(@course), { class: "btn btn-primary" } %></p>
 <% @course.plans.decorate.each_with_index do |plan, i| %>
   <div class="panel panel-default">
     <div class="panel-heading">

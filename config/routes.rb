@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   resources :courses do
     resources :plans
+    resources :assign_students, only: [:index, :update]
   end
   resources :teachers
   resources :students
+
+  resources :search_courses, only: [:index, :new]
 end
