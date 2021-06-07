@@ -2,7 +2,7 @@ class CourseDecorator < Draper::Decorator
   delegate_all
 
   def display_name
-    "# %03d #{name}" % id
+    h.content_tag :b, "# %03d #{name}" % id
   end
 
   def display_genres
