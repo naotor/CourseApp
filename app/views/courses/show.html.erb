@@ -1,0 +1,43 @@
+<h2>クラス詳細</h2>
+
+<table class="table">
+  <tr>
+    <th>クラスID</th>
+    <td><%= @course.id %></td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td><%= @course.name %></td>
+  </tr>
+  <tr>
+    <th>講師</th>
+    <td><%= @course.teacher.name %></td>
+  </tr>
+  <tr>
+    <th>難易度</th>
+    <td><%= @course.level.name %></td>
+  </tr>
+  <tr>
+    <th>分類</th>
+    <td><%= @course.display_genres %></td>
+  </tr>
+</table>
+
+<h2>科目一覧</h2>
+
+<p><%= link_to "科目の追加", new_course_plan_path(@course), { class: "btn btn-primary" } %></p>
+
+<% @course.plans.decorate.each_with_index do |plan, i| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= plan.display_title(i) %>
+    </div>
+    <div class="panel-body">
+      <%= plan.display_body %>
+      <div class="text-right">
+        <%= link_to("編集", edit_course_plan_path(@course, plan), { class: "btn btn-success"}) %>
+        <%= link_to("削除", course_plan_path(@course, plan), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger") %>
+      </div>
+    </div>
+  </div>
+<% end %>

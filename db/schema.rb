@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 7) do
+ActiveRecord::Schema.define(version: 8) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 7) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_plans_on_course_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
@@ -74,6 +83,7 @@ ActiveRecord::Schema.define(version: 7) do
   add_foreign_key "assoc_genres", "genres"
   add_foreign_key "courses", "levels"
   add_foreign_key "courses", "teachers"
+  add_foreign_key "plans", "courses"
   add_foreign_key "students", "genders"
   add_foreign_key "teachers", "genders"
 end
