@@ -1,0 +1,30 @@
+<h2>クラス登録</h2>
+
+<%= form_for @course do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, { class: "form-control", placeholder: "Enter name" } %>
+  </div>
+  <div class="form-group">
+    <%= f.label :teacher_id, "講師" %>
+    <%= f.select :teacher_id,
+      Teacher.all.map{|teacher| [teacher.name, teacher.id]},
+      { prompt: "----", selected: "", disabled: "" },
+      {required: true, class: "form-control" }%>
+  </div>
+  <div class="form-group">
+    <%= f.label :level_id, "難易度" %>
+    <%= f.select :level_id,
+      Level.all.map{|level| [level.name, level.id]},
+      { prompt: "----", selected: "", disabled: "" },
+      {required: true, class: "form-control" }%>
+  </div>
+  <div class="form-group">
+    <%= f.label :genre_ids, "分類" %>
+    <%= f.collection_select :genre_ids,
+      Genre.all, :id, :name, {},
+      { class: "form-control", multiple: true } %>
+  </div>
+
+  <%= f.submit "登録", { class: "btn btn-primary" } %>
+<% end %>

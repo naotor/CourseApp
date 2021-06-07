@@ -24,7 +24,7 @@
             </tr>
             <tr>
               <th>分類</th>
-              <td><%= course.genre.name %></td>
+              <td><%= course.display_genres %></td>
             </tr>
           </table>
           <hr>
@@ -35,7 +35,9 @@
         </div>
       </div>
       <div class="col-sm-12 row text-right">
-        <a href="#" class="btn btn-default">詳細</a>
+        <%= link_to "詳細", course_path(course), {class: "btn btn-default"} %>
+        <%= link_to "編集", edit_course_path(course), {class: "btn btn-success"} %>
+        <%= link_to "削除", course_path(course), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
       </div>
     </div>
   </div>

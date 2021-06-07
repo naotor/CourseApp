@@ -1,10 +1,3 @@
-Course.delete_all()
-Genre.delete_all()
-Level.delete_all()
-Student.delete_all()
-Teacher.delete_all()
-Gender.delete_all()
-
 gender_ids = []
 gender_ids << Gender.create(name: "男性").id
 gender_ids << Gender.create(name: "女性").id
@@ -43,7 +36,7 @@ puts("----- Seed Genre completed. -----")
   obj.name = "コース #{i}"
   obj.teacher_id = teacher_ids.sample
   obj.level_id = level_ids.sample
-  obj.genre_id = genre_ids.sample
+  obj.genre_ids = genre_ids.sample(3)
   obj.save
 end
 puts("----- Seed Course completed. -----")
