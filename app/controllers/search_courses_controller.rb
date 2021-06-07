@@ -2,7 +2,13 @@ class SearchCoursesController < ApplicationController
 
   def index
     @course = Search::Course.new(search_course_params)
-    @courses = @course.matches.decorate
+    @courses = @course
+      .matches
+      .preload(:students)
+      .preload(:teacher)
+      .preload(:level)
+      .preload(:genres)
+      .decorate
   end
 
   def new

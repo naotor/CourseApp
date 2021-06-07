@@ -1,7 +1,12 @@
 class CoursesController < ApplicationController
 
   def index
-    @courses = Course.all.decorate
+    @courses = Course
+      .preload(:students)
+      .preload(:teacher)
+      .preload(:level)
+      .preload(:genres)
+      .decorate
   end
 
   def new

@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :find_course
+  before_action :set_course
 
   def index
   end
@@ -39,7 +39,7 @@ class PlansController < ApplicationController
   end
 
   private
-  def find_course
+  def set_course
     @course = Course.find(params[:course_id])
   end
 
