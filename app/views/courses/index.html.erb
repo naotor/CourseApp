@@ -1,38 +1,42 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<h1>クラス管理</h1>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      <i class="bi bi-music-player-fill"></i>
-      コース名
-    </h3>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-6">
-        <table class="table">
-          <tr>
-            <th>講師</th>
-            <td>○○</td>
-          </tr>
-          <tr>
-            <th>難易度</th>
-            <td>○○</td>
-          </tr>
-          <tr>
-            <th>分類</th>
-            <td>○○</td>
-          </tr>
-        </table>
-        <hr>
-        <h4>科目一覧</h4>
+<p><%= link_to "新規作成", new_course_path, {class: "btn btn-primary"} %></p>
+
+<% @courses.each do |course| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <i class="bi bi-music-player-fill"></i>
+        <%= course.display_name %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="table">
+            <tr>
+              <th>講師</th>
+              <td><%= course.teacher.name %></td>
+            </tr>
+            <tr>
+              <th>難易度</th>
+              <td><%= course.level.name %></td>
+            </tr>
+            <tr>
+              <th>分類</th>
+              <td><%= course.genre.name %></td>
+            </tr>
+          </table>
+          <hr>
+          <h4>科目一覧</h4>
+        </div>
+        <div class="col-sm-6">
+          <h4>生徒一覧</h4>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <h4>生徒一覧</h4>
+      <div class="col-sm-12 row text-right">
+        <a href="#" class="btn btn-default">詳細</a>
       </div>
     </div>
-    <div class="col-sm-12 row text-right">
-      <a href="#" class="btn btn-default">詳細</a>
   </div>
-</div>
+<% end %>

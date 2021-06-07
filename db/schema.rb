@@ -10,12 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 5) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.bigint "teacher_id", null: false
+    t.bigint "genre_id", null: false
+    t.bigint "level_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_courses_on_genre_id"
+    t.index ["level_id"], name: "index_courses_on_level_id"
+    t.index ["teacher_id"], name: "index_courses_on_teacher_id"
+  end
+
   create_table "genders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "levels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -30,5 +54,8 @@ ActiveRecord::Schema.define(version: 2) do
     t.index ["gender_id"], name: "index_teachers_on_gender_id"
   end
 
+  add_foreign_key "courses", "genres"
+  add_foreign_key "courses", "levels"
+  add_foreign_key "courses", "teachers"
   add_foreign_key "teachers", "genders"
 end
