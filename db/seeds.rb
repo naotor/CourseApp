@@ -1,6 +1,7 @@
 Course.delete_all()
 Genre.delete_all()
 Level.delete_all()
+Student.delete_all()
 Teacher.delete_all()
 Gender.delete_all()
 
@@ -46,3 +47,14 @@ puts("----- Seed Genre completed. -----")
   obj.save
 end
 puts("----- Seed Course completed. -----")
+
+student_ids = []
+1.upto(10) do |i|
+  obj = Student.new
+  obj.name = "生徒 #{i}"
+  obj.phone_number = "01-2345-6789"
+  obj.gender_id = gender_ids.sample
+  obj.save
+  student_ids << obj.id
+end
+puts("----- Seed Student completed. -----")
