@@ -1,6 +1,9 @@
 class PlansController < ApplicationController
   before_action :find_course
 
+  def index
+  end
+
   def new
     @plan = @course.plans.new
   end
@@ -9,7 +12,7 @@ class PlansController < ApplicationController
     @plan = @course.plans.new(plan_params)
 
     if @plan.save
-      redirect_to course_path(@course)
+      redirect_to course_plans_path(@course)
     else
       render :new
     end
@@ -23,7 +26,7 @@ class PlansController < ApplicationController
     @plan = @course.plans.find(params[:id])
 
     if @plan.update(plan_params)
-      redirect_to course_path(@course)
+      redirect_to course_plans_path(@course)
     else
       render :edit
     end
@@ -32,7 +35,7 @@ class PlansController < ApplicationController
   def destroy
     @plan = @course.plans.find(params[:id])
     @plan.destroy
-    redirect_to course_path(@course)
+    redirect_to course_plans_path(@course)
   end
 
   private

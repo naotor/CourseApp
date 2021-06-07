@@ -3,10 +3,6 @@ class CoursesController < ApplicationController
     @courses = Course.all.decorate
   end
 
-  def show
-    @course = Course.find(params[:id]).decorate
-  end
-
   def new
     @course = Course.new
   end

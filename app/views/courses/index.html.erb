@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="col-sm-12 row text-right">
-        <%= link_to "詳細", course_path(course), {class: "btn btn-default"} %>
+        <%= link_to "科目一覧", course_plans_path(course), {class: "btn btn-default"} %>
         <%= link_to "編集", edit_course_path(course), {class: "btn btn-success"} %>
         <%= link_to "削除", course_path(course), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
       </div>
