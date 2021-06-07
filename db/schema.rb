@@ -10,18 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 9) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assoc_genres", force: :cascade do |t|
+  create_table "assign_genres", force: :cascade do |t|
     t.bigint "course_id", null: false
     t.bigint "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_assoc_genres_on_course_id"
-    t.index ["genre_id"], name: "index_assoc_genres_on_genre_id"
+    t.index ["course_id"], name: "index_assign_genres_on_course_id"
+    t.index ["genre_id"], name: "index_assign_genres_on_genre_id"
+  end
+
+  create_table "assign_students", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_assign_students_on_course_id"
+    t.index ["student_id"], name: "index_assign_students_on_student_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -79,8 +88,10 @@ ActiveRecord::Schema.define(version: 8) do
     t.index ["gender_id"], name: "index_teachers_on_gender_id"
   end
 
-  add_foreign_key "assoc_genres", "courses"
-  add_foreign_key "assoc_genres", "genres"
+  add_foreign_key "assign_genres", "courses"
+  add_foreign_key "assign_genres", "genres"
+  add_foreign_key "assign_students", "courses"
+  add_foreign_key "assign_students", "students"
   add_foreign_key "courses", "levels"
   add_foreign_key "courses", "teachers"
   add_foreign_key "plans", "courses"

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'courses#index'
+  root 'search_courses#new'
 
   resources :courses do
     resources :plans
