@@ -9,4 +9,12 @@ module ApplicationHelper
       link_to title, path
     end
   end
+
+  def selectable_teachers
+    Teacher.all.map{|teacher| [teacher.name, teacher.id]}
+  end
+
+  def selectable_levels
+    Level.all.map{|level| [level.name, level.id]}
+  end
 end

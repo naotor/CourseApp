@@ -4,10 +4,6 @@ class SearchCoursesController < ApplicationController
     @course = Search::Course.new(search_course_params)
     @courses = @course
       .matches
-      .preload(:students)
-      .preload(:teacher)
-      .preload(:level)
-      .preload(:genres)
       .decorate
   end
 
@@ -22,6 +18,10 @@ class SearchCoursesController < ApplicationController
       .permit(%i(
         course_name
         teacher_name
-      ))
+        student_name
+        level_id
+      ) + [
+        genre_ids: []
+      ])
   end
 end

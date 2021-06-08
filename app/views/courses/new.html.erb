@@ -8,22 +8,22 @@
   <div class="form-group">
     <%= f.label :teacher_id, "講師" %>
     <%= f.select :teacher_id,
-      Teacher.all.map{|teacher| [teacher.name, teacher.id]},
+      selectable_teachers,
       { prompt: "----", selected: "", disabled: "" },
-      {required: true, class: "form-control" }%>
+      { required: true, class: "form-control" } %>
   </div>
   <div class="form-group">
     <%= f.label :level_id, "難易度" %>
     <%= f.select :level_id,
-      Level.all.map{|level| [level.name, level.id]},
+      selectable_levels,
       { prompt: "----", selected: "", disabled: "" },
-      {required: true, class: "form-control" }%>
+      { required: true, class: "form-control" }%>
   </div>
   <div class="form-group">
     <%= f.label :genre_ids, "分類" %>
     <%= f.collection_select :genre_ids,
       Genre.all, :id, :name, {},
-      { class: "form-control", multiple: true } %>
+      { class: "form-control", multiple: true, size: 2 } %>
   </div>
 
   <%= f.submit "登録", { class: "btn btn-primary" } %>
