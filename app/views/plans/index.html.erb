@@ -1,18 +1,5 @@
 <h2><%= @course.name %>の科目一覧</h2>
 
 <p><%= link_to "新規作成", new_course_plan_path(@course), { class: "btn btn-primary" } %></p>
-<% @course.plans.decorate.each_with_index do |plan, i| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <i class="bi bi-music-note-list"></i>
-      <%= plan.display_title(i) %>
-    </div>
-    <div class="panel-body">
-      <%= plan.display_body %>
-      <div class="text-right">
-        <%= link_to("編集", edit_course_plan_path(@course, plan), { class: "btn btn-success"}) %>
-        <%= link_to("削除", course_plan_path(@course, plan), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger") %>
-      </div>
-    </div>
-  </div>
-<% end %>
+
+<%= render :partial => 'plan', collection: @course.plans.decorate, locals: { admin: true, course: @course } %>

@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="bi bi-music-note-list"></i>
+    <%= plan.display_title %>
+  </div>
+  <div class="panel-body">
+    <%= plan.display_body %>
+    <% if admin %>
+      <div class="text-right">
+        <%= link_to("編集", edit_course_plan_path(course, plan), { class: "btn btn-success"}) %>
+        <%= link_to("削除", course_plan_path(course, plan), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger") %>
+      </div>
+    <% end %>
+  </div>
+</div>
